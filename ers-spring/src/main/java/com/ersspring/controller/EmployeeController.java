@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ersspring.exception.ApplicationException;
-import com.ersspring.exceptions.InvalidLogin;
+import com.ersspring.exceptions.InvalidLoginException;
 import com.ersspring.pojo.EmployeePojo;
 import com.ersspring.service.EmployeeService;
 
@@ -29,7 +29,7 @@ public class EmployeeController {
 	// http://localhost:5555/api/employees
 	
 	@PostMapping("employees/login")
-	public EmployeePojo getEmployee(@RequestBody EmployeePojo employeePojo) throws ApplicationException,InvalidLogin {
+	public EmployeePojo getEmployee(@RequestBody EmployeePojo employeePojo) throws ApplicationException,InvalidLoginException {
 		
 	return employeeService.findByEmpUserName(employeePojo);
 		

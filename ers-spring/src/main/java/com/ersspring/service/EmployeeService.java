@@ -3,7 +3,7 @@ package com.ersspring.service;
 import java.util.List;
 
 import com.ersspring.exception.ApplicationException;
-import com.ersspring.exceptions.InvalidLogin;
+import com.ersspring.exceptions.InvalidLoginException;
 import com.ersspring.pojo.EmployeePojo;
 
 public interface EmployeeService {
@@ -23,7 +23,7 @@ public interface EmployeeService {
 	//checks hashed password
 	public boolean checkPass(String password, String hashedPass);
 	//find user
-	public EmployeePojo findByEmpUserName(EmployeePojo employeePojo)throws InvalidLogin;
+	public EmployeePojo findByEmpUserName(EmployeePojo employeePojo)throws InvalidLoginException;
 	
 	
 
