@@ -38,16 +38,6 @@ public class ReimbursementController {
 		return reimbService.viewAllRequestsByRequester(requesterId);
 	}
 	
-	@GetMapping("reimb/{requesterId}")
-	public List<ReimbursementPojo> viewPendingRequestsByRequester(int empid) throws ApplicationException {
-		return reimbService.viewPendingRequestsByRequester(empid);
-	}
-	
-	@GetMapping("reimb/{requesterId}")
-	public List<ReimbursementPojo> viewResolvedRequestsByRequester(int empid) throws ApplicationException {
-		return reimbService.viewResolvedRequestsByRequester(empid);
-	}
-	
 	@GetMapping("allPending")
 	public List<ReimbursementPojo> viewAllPendingRequests() throws ApplicationException {
 		return reimbService.viewAllPendingRequests();

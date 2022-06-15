@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.ersspring.dao.EmployeeDao;
 import com.ersspring.entity.EmployeeEntity;
 import com.ersspring.exception.ApplicationException;
+import com.ersspring.exceptions.InvalidLogin;
 import com.ersspring.pojo.EmployeePojo;
 import com.ersspring.pojo.RolesPojo;
 
@@ -46,9 +47,24 @@ public class EmployeeServiceImpl implements EmployeeService{
 		}
 	}
 	@Override
-	public EmployeePojo getEmployee(EmployeePojo employeePojo) throws ApplicationException {
-		Optional<EmployeeEntity> employeeEntityOpt = employeeDao;
-		return null;
+	public EmployeePojo findByEmpUserName(EmployeePojo employeePojo) throws InvalidLogin{
+		EmployeePojo user=null;
+		RolesPojo rolePojo = new RolesPojo();
+		
+		EmployeeEntity fetchedEmpEnt = employeeDao.findByEmpUserName(employeePojo.getEmpUserName());
+		Boolean checkedPass = checkPass(employeePojo.getEmpHashedPassword(), fetchedEmpEnt.getEmpHashedPassword());
+		if (checkedPass == true) {
+			rolePojo.setRoleId(fetchedEmpEnt.getRolesEntity().getRoleId());
+			rolePojo.setRole(fetchedEmpEnt.getRolesEntity().getRole());
+			
+			user= new EmployeePojo(fetchedEmpEnt.getEmpId(),fetchedEmpEnt.getEmpFirstName(),fetchedEmpEnt.getEmpLastName(),
+					fetchedEmpEnt.getEmpUserName(),fetchedEmpEnt.getEmpHashedPassword(),rolePojo);
+
+			return user;
+		}else { 
+			throw new InvalidLogin("Invalid login or password");
+		}
+		
 	}
 
 	@Override
@@ -97,5 +113,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 		}
 		return allEmployeesPojo;
 	}
+	
 }
 

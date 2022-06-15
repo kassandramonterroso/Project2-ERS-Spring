@@ -3,12 +3,11 @@ package com.ersspring.service;
 import java.util.List;
 
 import com.ersspring.exception.ApplicationException;
+import com.ersspring.exceptions.InvalidLogin;
 import com.ersspring.pojo.EmployeePojo;
 
 public interface EmployeeService {
 
-	// method to get employee
-	EmployeePojo getEmployee(EmployeePojo employeePojo) throws ApplicationException;
 
 	// Method for employee to view their information
 	EmployeePojo empViewInfo(int empId) throws ApplicationException;
@@ -23,6 +22,8 @@ public interface EmployeeService {
 	public String hashPassword(String password);
 	//checks hashed password
 	public boolean checkPass(String password, String hashedPass);
+	//find user
+	public EmployeePojo findByEmpUserName(EmployeePojo employeePojo)throws InvalidLogin;
 	
 	
 

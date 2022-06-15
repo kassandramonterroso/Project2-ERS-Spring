@@ -4,13 +4,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ersspring.exception.ApplicationException;
+import com.ersspring.exceptions.InvalidLogin;
 import com.ersspring.pojo.EmployeePojo;
 import com.ersspring.service.EmployeeService;
+
 
 
 @CrossOrigin // to enable cors
@@ -24,9 +28,12 @@ public class EmployeeController {
 	
 	// http://localhost:5555/api/employees
 	
-	@GetMapping("employees")
-	public EmployeePojo getEmployee(EmployeePojo employeePojo) throws ApplicationException {
-		return employeeService.getEmployee(employeePojo);
+	@PostMapping("employees/login")
+	public EmployeePojo getEmployee(@RequestBody EmployeePojo employeePojo) throws ApplicationException,InvalidLogin {
+		
+	return employeeService.findByEmpUserName(employeePojo);
+		
+		
 	}
 	
 	// http://localhost:5555/api/employees/2
