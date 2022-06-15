@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,10 +25,29 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public EmployeeServiceImpl() {
 		
 	}
+	@Override
+	public String hashPassword(String password) {
+		// takes your password and returns an encrypted version of it
+		String hashedPass = BCrypt.hashpw(password, BCrypt.gensalt(10));
 
+		return hashedPass;
+	}
+
+	// checks the users password
+	@Override
+	public boolean checkPass(String password, String hashedPass) {
+		// takes your password and an encrypted password and compares it to see if its
+		// the same values
+		// as the password, if so it returns true
+		if (BCrypt.checkpw(password, hashedPass)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	@Override
 	public EmployeePojo getEmployee(EmployeePojo employeePojo) throws ApplicationException {
-		// TO BE IMPLEMENTED
+		Optional<EmployeeEntity> employeeEntityOpt = employeeDao;
 		return null;
 	}
 

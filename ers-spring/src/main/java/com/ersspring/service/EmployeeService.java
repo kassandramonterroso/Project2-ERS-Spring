@@ -18,5 +18,12 @@ public interface EmployeeService {
 
 	// Method for manager to view all employees
 	List<EmployeePojo> manViewAll() throws ApplicationException;
+	
+	//hashes password
+	public String hashPassword(String password);
+	//checks hashed password
+	public boolean checkPass(String password, String hashedPass);
+	
+	
 
 }
