@@ -8,4 +8,6 @@ import com.ersspring.entity.EmployeeEntity;
 @Repository
 public interface EmployeeDao extends JpaRepository<EmployeeEntity, Integer>{
 
+	EmployeeEntity findByEmpUserNameAndEmpHashedPassword(String username, String password);
+
 }

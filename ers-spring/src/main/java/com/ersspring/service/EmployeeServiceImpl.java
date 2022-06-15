@@ -2,6 +2,7 @@ package com.ersspring.service;
 
 import java.util.ArrayList;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -76,6 +77,22 @@ public class EmployeeServiceImpl implements EmployeeService{
 			allEmployeesPojo.add(returnEmployeePojo);
 		}
 		return allEmployeesPojo;
+	}
+
+	@Override
+	public EmployeePojo findByEmpUserNameAndEmpHashedPassword(String username, String password) {
+		EmployeePojo employeePojo=null;
+		RolesPojo rolePojo = new RolesPojo();
+		
+		EmployeeEntity fetchedEmpEnt = employeeDao.findByEmpUserNameAndEmpHashedPassword(username, password);
+		
+		rolePojo.setRoleId(fetchedEmpEnt.getRolesEntity().getRoleId());
+		rolePojo.setRole(fetchedEmpEnt.getRolesEntity().getRole());
+		
+		employeePojo= new EmployeePojo(fetchedEmpEnt.getEmpId(),fetchedEmpEnt.getEmpFirstName(),fetchedEmpEnt.getEmpLastName(),
+				fetchedEmpEnt.getEmpUserName(),fetchedEmpEnt.getEmpHashedPassword(),rolePojo);
+
+		return employeePojo;
 	}
 }
 
