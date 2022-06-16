@@ -30,7 +30,6 @@ public class EmployeeController {
 	
 	@PostMapping("employees/login")
 	public EmployeePojo getEmployee(@RequestBody EmployeePojo employeePojo) throws ApplicationException,InvalidLoginException {
-		
 	return employeeService.findByEmpUserName(employeePojo);
 		
 		
