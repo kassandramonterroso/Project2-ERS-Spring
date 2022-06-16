@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+@ControllerAdvice
+public class GlobalException extends ResponseEntityExceptionHandler{
 
-public class GlobalException {
-
-
+	
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
 		 Map<String, String> errors = new HashMap<>();
@@ -31,8 +31,9 @@ public class GlobalException {
 
 
 	
-	@ExceptionHandler(InvalidLogin.class)
-	protected ResponseEntity<Object> handleBookNotFoundException(InvalidLogin ex) { 
+	@ExceptionHandler(InvalidLoginException.class)
+	protected ResponseEntity<Object> handleBookNotFoundException(InvalidLoginException ex) { 
+		System.out.println("inside invalidloginexception-------------------------");
 		 Map<String, String> errors = new HashMap<>();										
 		 System.out.println(errors);
 		 errors.put("date", LocalDate.now()+"");

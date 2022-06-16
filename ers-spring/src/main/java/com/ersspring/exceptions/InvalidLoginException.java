@@ -1,9 +1,9 @@
 package com.ersspring.exceptions;
 
-public class InvalidLogin extends Exception{
+public class InvalidLoginException extends Exception{
 	String message;
 	
-	public InvalidLogin(String message) {
+	public InvalidLoginException(String message) {
 		this.message = message;
 	}
 

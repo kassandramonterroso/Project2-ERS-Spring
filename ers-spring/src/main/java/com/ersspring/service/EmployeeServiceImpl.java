@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import com.ersspring.dao.EmployeeDao;
 import com.ersspring.entity.EmployeeEntity;
 import com.ersspring.exception.ApplicationException;
-import com.ersspring.exceptions.InvalidLogin;
+import com.ersspring.exceptions.InvalidLoginException;
 import com.ersspring.pojo.EmployeePojo;
 import com.ersspring.pojo.RolesPojo;
 
@@ -47,11 +47,14 @@ public class EmployeeServiceImpl implements EmployeeService{
 		}
 	}
 	@Override
-	public EmployeePojo findByEmpUserName(EmployeePojo employeePojo) throws InvalidLogin{
+	public EmployeePojo findByEmpUserName(EmployeePojo employeePojo) throws InvalidLoginException{
 		EmployeePojo user=null;
 		RolesPojo rolePojo = new RolesPojo();
 		
 		EmployeeEntity fetchedEmpEnt = employeeDao.findByEmpUserName(employeePojo.getEmpUserName());
+		if (fetchedEmpEnt == null){
+			throw new InvalidLoginException("Invalid login or password");
+		}
 		Boolean checkedPass = checkPass(employeePojo.getEmpHashedPassword(), fetchedEmpEnt.getEmpHashedPassword());
 		if (checkedPass == true) {
 			rolePojo.setRoleId(fetchedEmpEnt.getRolesEntity().getRoleId());
@@ -62,7 +65,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 			return user;
 		}else { 
-			throw new InvalidLogin("Invalid login or password");
+			throw new InvalidLoginException("Invalid login or password");
 		}
 		
 	}
