@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,17 +39,17 @@ public class ReimbursementController {
 		return reimbService.viewAllRequestsByRequester(requesterId);
 	}
 	
-	@GetMapping("allPending")
+	@GetMapping("allpending")
 	public List<ReimbursementPojo> viewAllPendingRequests() throws ApplicationException {
 		return reimbService.viewAllPendingRequests();
 	}
 	
-	@GetMapping("allResolved")
+	@GetMapping("allresolved")
 	public List<ReimbursementPojo> viewAllResolvedRequests() throws ApplicationException {
 		return reimbService.viewAllResolvedRequests();
 	}
 	
-	@PutMapping("updateRequest")
+	@PutMapping("updaterequest")
 	public ReimbursementPojo manUpdateRequest(ReimbursementPojo reimbursementPojo) throws ApplicationException {
 		return reimbService.manUpdateRequest(reimbursementPojo);
 	}
