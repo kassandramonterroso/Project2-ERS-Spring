@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,23 +31,22 @@ public class EmployeeController {
 	
 	@PostMapping("employees/login")
 	public EmployeePojo getEmployee(@RequestBody EmployeePojo employeePojo) throws ApplicationException,InvalidLoginException {
-	return employeeService.findByEmpUserName(employeePojo);
-		
-		
+	return employeeService.findByEmpUserName(employeePojo);	
 	}
 	
-	// http://localhost:5555/api/employees/2
+	// http://localhost:7474/api/employees/2
 	@GetMapping("employees/{empid}")
-	public EmployeePojo empViewInfo(int empId) throws ApplicationException {
+	public EmployeePojo empViewInfo(@PathVariable("empid")int empId) throws ApplicationException {
 		return employeeService.empViewInfo(empId);
 	}
 	
-	// http://localhost:5555/api/employees/2
-	@PutMapping("employees/{empid}")
-	public EmployeePojo empUpdateInfo(EmployeePojo employeePojo, int empId) throws ApplicationException {
-		return employeeService.empUpdateInfo(employeePojo, empId);
+	// http://localhost:7474/api/employees/2
+	@PutMapping("employees")
+	public EmployeePojo empUpdateInfo(@RequestBody EmployeePojo employeePojo) throws ApplicationException {
+		return employeeService.empUpdateInfo(employeePojo);
 	}
 	
+	// http://localhost:7474/api/employees
 	@GetMapping("employees")	
 	public List<EmployeePojo> manViewAll() throws ApplicationException {
 		return employeeService.manViewAll();
