@@ -32,20 +32,20 @@ public class EmployeeEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "emp_role_id")
-	private RolesEntity rolesEntity;
+	private RolesEntity roles;
 
 	public EmployeeEntity() {
 	}
 
 	public EmployeeEntity(int empId, String empFirstName, String empLastName, String empUserName,
-			String empHashedPassword, RolesEntity rolesEntity) {
+			String empHashedPassword, RolesEntity roles) {
 		super();
 		this.empId = empId;
 		this.empFirstName = empFirstName;
 		this.empLastName = empLastName;
 		this.empUserName = empUserName;
 		this.empHashedPassword = empHashedPassword;
-		this.rolesEntity = rolesEntity;
+		this.roles = roles;
 	}
 
 	public EmployeeEntity(int empId, String empFirstName, String empLastName, String empUserName,
@@ -98,19 +98,19 @@ public class EmployeeEntity {
 		this.empHashedPassword = empHashedPassword;
 	}
 
-	public RolesEntity getRolesEntity() {
-		return rolesEntity;
+	public RolesEntity getRoles() {
+		return roles;
 	}
 
-	public void setRolesEntity(RolesEntity rolesEntity) {
-		this.rolesEntity = rolesEntity;
+	public void setRoles(RolesEntity roles) {
+		this.roles = roles;
 	}
 
 	@Override
 	public String toString() {
 		return "EmployeeEntity [empId=" + empId + ", empFirstName=" + empFirstName + ", empLastName=" + empLastName
-				+ ", empUserName=" + empUserName + ", empHashedPassword=" + empHashedPassword + ", rolesEntity="
-				+ rolesEntity + "]";
+				+ ", empUserName=" + empUserName + ", empHashedPassword=" + empHashedPassword + ", roles="
+				+ roles + "]";
 	}
 
 }

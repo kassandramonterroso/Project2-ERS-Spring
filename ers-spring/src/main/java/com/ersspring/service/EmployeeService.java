@@ -13,7 +13,7 @@ public interface EmployeeService {
 	EmployeePojo empViewInfo(int empId) throws ApplicationException;
 
 	// Method for employee to update their information
-	EmployeePojo empUpdateInfo(EmployeePojo employeePojo, int empId) throws ApplicationException;
+	EmployeePojo empUpdateInfo(EmployeePojo employeePojo) throws ApplicationException;
 
 	// Method for manager to view all employees
 	List<EmployeePojo> manViewAll() throws ApplicationException;
@@ -23,7 +23,7 @@ public interface EmployeeService {
 	//checks hashed password
 	public boolean checkPass(String password, String hashedPass);
 	//find user
-	public EmployeePojo findByEmpUserName(EmployeePojo employeePojo)throws InvalidLoginException;
+	public EmployeePojo findByEmpUserName(EmployeePojo employeePojo) throws InvalidLoginException;
 	
 	
 
