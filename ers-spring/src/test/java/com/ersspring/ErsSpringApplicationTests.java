@@ -60,11 +60,10 @@ class ErsSpringApplicationTests {
 	}
 	@Test
 	void testEmpUpdateInfo() throws ApplicationException {
-	
+		EmployeePojo sendPojo = new EmployeePojo(1,"testFirstName", "testLastName","testUserName"," $2a$10$HwO.e2gax/jJuW49MfLbvujyUQu8Wr6yppRHXFkLp11./Hnaj74Nu", userRolePojo);
 		when(dao.save(testUser)).thenReturn(testUser);
-		EmployeePojo sendPojo = new EmployeePojo(1,"diffTestFirstName", "diffTestLastName","diffTestUserName"," $2a$10$HwO.e2gax/jJuW49MfLbvujyUQu8Wr6yppRHXFkLp11./Hnaj74Nu", userRolePojo);
 		EmployeePojo actualUser = service.empUpdateInfo(sendPojo);
-		assertEquals(sendPojo, actualUser);
+		assertEquals(testUser.getEmpFirstName(), actualUser.getEmpFirstName());
 	}
 	@Test
 	void testManViewAll() throws ApplicationException {
@@ -80,6 +79,6 @@ class ErsSpringApplicationTests {
 		List<EmployeePojo> actualUsers = service.manViewAll();
 	
 		
-		assertEquals(2, testAllEmployeesPojos.size());
+		assertEquals(2, actualUsers.size());
 	}
 }
