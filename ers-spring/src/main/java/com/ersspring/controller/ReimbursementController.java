@@ -62,4 +62,9 @@ public class ReimbursementController {
 	public ReimbursementPojo manUpdateRequest(@RequestBody ReimbursementPojo reimbursementPojo) throws ApplicationException {
 		return reimbService.manUpdateRequest(reimbursementPojo);
 	}
+	
+	@GetMapping("reimb/{reimbid}")
+	public ReimbursementPojo viewReimbByReimbId(@PathVariable("reimbid") int reimbid) throws ApplicationException{
+		return reimbService.viewReimbByReimbId(reimbid);
+	}
 }

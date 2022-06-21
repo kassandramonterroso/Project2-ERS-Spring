@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -296,5 +297,22 @@ public class ReimbServiceImpl implements ReimbService {
 		reimbursementDao.save(fetchedReimbEntity);
 				
 		return reimbursementPojo;
-	}	
+	}
+	
+	@Override
+	public ReimbursementPojo viewReimbByReimbId(int reimbid) throws ApplicationException {
+		Optional<ReimbursementEntity> reimbEntityOpt = reimbursementDao.findById(reimbid);
+		ReimbursementPojo reimbursementPojo = null;
+		if(reimbEntityOpt.isPresent()) {
+			// take out the entity object which is wrapped into the optional object
+			ReimbursementEntity fetchedReimbEntity = reimbEntityOpt.get();
+			
+			// copy the entity into the pojo
+			reimbursementPojo = new ReimbursementPojo();
+			
+			BeanUtils.copyProperties(fetchedReimbEntity, reimbursementPojo); 
+			
+		}
+		return reimbursementPojo;
+	}
 }

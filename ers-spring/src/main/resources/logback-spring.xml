@@ -39,7 +39,7 @@
     </root>
 
     <!-- LOG "com.baeldung*" at TRACE level -->
-    <logger name="com.ersspring.ers" level="info" additivity="false">
+    <logger name="com.ersspring" level="info" additivity="false">
         <appender-ref ref="RollingFile" />
       <!--   <appender-ref ref="Console" /> -->
     </logger>

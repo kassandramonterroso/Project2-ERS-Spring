@@ -106,6 +106,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		employeeEntity.setRoles(rolesEnt);
 		
+		String hashedPass = hashPassword(employeePojo.getEmpHashedPassword());
+        employeePojo.setEmpHashedPassword(hashedPass);
+		
 		BeanUtils.copyProperties(employeePojo, employeeEntity);
 				
 		//  now pass the employeeEntity object to spring data jpa to be updated into the table
