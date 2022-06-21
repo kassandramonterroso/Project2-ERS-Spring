@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.ersspring.entity.ReimbursementEntity;
-import com.ersspring.exception.ApplicationException;
+import com.ersspring.exceptions.ApplicationException;
 
 @Repository
 public interface ReimbursementDao extends JpaRepository<ReimbursementEntity, Integer> {

@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ersspring.dao.ImageReceiptDao;
 import com.ersspring.entity.ImageReceiptEntity;
-import com.ersspring.exception.ApplicationException;
+import com.ersspring.exceptions.ApplicationException;
 import com.ersspring.pojo.ImageReceiptPojo;
 
 @Service

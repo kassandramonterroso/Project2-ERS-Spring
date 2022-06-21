@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ersspring.exception.ApplicationException;
+import com.ersspring.exceptions.ApplicationException;
 import com.ersspring.exceptions.InvalidLoginException;
 import com.ersspring.pojo.EmployeePojo;
 import com.ersspring.service.EmployeeService;
