@@ -25,9 +25,9 @@ public class EmployeeController {
 	
 	@Autowired
 	EmployeeService employeeService;
-	// create the rest methods for the rest enpoints
+	// create the rest methods for the rest endpoints
 	
-	// http://localhost:5555/api/employees
+	// http://localhost:7474/api/employees
 	
 	@PostMapping("employees/login")
 	public EmployeePojo getEmployee(@RequestBody EmployeePojo employeePojo) throws ApplicationException,InvalidLoginException {
