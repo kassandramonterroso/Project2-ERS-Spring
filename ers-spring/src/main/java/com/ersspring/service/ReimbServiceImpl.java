@@ -11,7 +11,7 @@ import com.ersspring.dao.ReimbursementDao;
 import com.ersspring.entity.EmployeeEntity;
 import com.ersspring.entity.ReimbursementEntity;
 import com.ersspring.entity.StatusEntity;
-import com.ersspring.exception.ApplicationException;
+import com.ersspring.exceptions.ApplicationException;
 import com.ersspring.pojo.EmployeePojo;
 import com.ersspring.pojo.ReimbursementPojo;
 import com.ersspring.pojo.RolesPojo;

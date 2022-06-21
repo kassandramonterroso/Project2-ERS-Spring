@@ -1,4 +1,4 @@
-package com.ersspring.exception;
+package com.ersspring.exceptions;
 
 public class ApplicationException extends Exception {
 

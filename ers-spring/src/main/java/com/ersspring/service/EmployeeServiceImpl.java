@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import com.ersspring.dao.EmployeeDao;
 import com.ersspring.entity.EmployeeEntity;
 import com.ersspring.entity.RolesEntity;
-import com.ersspring.exception.ApplicationException;
+import com.ersspring.exceptions.ApplicationException;
 import com.ersspring.exceptions.InvalidLoginException;
 import com.ersspring.pojo.EmployeePojo;
 import com.ersspring.pojo.RolesPojo;

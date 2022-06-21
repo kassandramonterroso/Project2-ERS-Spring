@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.ersspring.exception.ApplicationException;
+import com.ersspring.exceptions.ApplicationException;
 import com.ersspring.pojo.ImageReceiptPojo;
 
 
